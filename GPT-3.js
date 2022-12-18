@@ -9,7 +9,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 document.body.appendChild(canvas);
 var ctx = canvas.getContext('2d');
-var center = window.innerWidth / 2;
+var cent_w = window.innerWidth / 2;
+var cent_h = window.innerHeight / 2;
 
 function Object(x, y, vx, vy, mass) {
   this.x = x;
@@ -65,16 +66,16 @@ function loop() {
 }
 
 
-addObject(center , 500, 0, 0, 1000);
-addObject(center + 480, 600, 0, -1, 50);
+addObject(cent_w , cent_h, 0, 0, 1000);
+addObject(cent_w + 480, cent_h + 100, 0, -1, 50);
 
-addObject(center + 350, 450, 0, -2,5);
-addObject(center + 360, 450, 0, -1.2,5);
+addObject(cent_w + 350, cent_h - 50, 0, -2,5);
+addObject(cent_w + 360, cent_h - 50, 0, -1.2,5);
 
-addObject(center -100, 400, -2, 2, 30);
-addObject(center, 400, -3, 0, 10);
+addObject(cent_w -100, cent_h - 100, -2, 2, 30);
+addObject(cent_w, cent_h - 100, -3, 0, 10);
 
-addObject(center -320, 500, 0, 1.5,15);
-addObject(center -330, 500, 0, 2.8,2);
+addObject(cent_w -320, cent_h, 0, 1.5,15);
+addObject(cent_w -330, cent_h, 0, 2.8,2);
 
 loop();
