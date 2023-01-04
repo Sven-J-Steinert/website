@@ -3,8 +3,13 @@ html, body, canvas {
   padding: 0;
 }
 
+html{
+  background-color: rgb(229, 229, 229);
+}
+
 body{
-  background-color:hsl(0, 0%, 90%);
+  overflow: hidden;
+  background-color: rgb(229, 229, 229);
 }
 
 h1{
@@ -15,7 +20,82 @@ h1{
 .centerBox {
   text-align: center;
   position: absolute;
-  top:10%;
+  top:80vh;
   left:50%;
+  width: 100vw;
   transform: translate(-50%, -50%);
+  background-color: hsla(0, 0%, 90%, 0.4);
+}
+
+.centerBox:hover{
+  background: hsla(0, 0%, 66%, 0.4);
+}
+
+.imgbanner {
+  display: flex;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  top:0px;
+  left:50%;
+  transform: translate(-50%, -0%);
+  
+  width: 100%;
+  height: auto;
+  
+}
+
+
+img.buttonimg{
+    height: 100%;
+    width: 100%;
+}
+
+div.buttons{
+    margin: 20px;
+    display: inline-block;
+    height: 100px;
+    width: 300px;
+    background: rgba(70,70,70,.6);
+}
+
+div.buttons:hover{
+    background: rgba(15,193,183,.5);
+}
+
+@media only screen and (max-aspect-ratio: 4/2.2) {
+  .imgbanner {
+    width: auto;
+    height:100vh;
+  }
+
+}
+
+@media only screen and (max-aspect-ratio: 13/16) {
+
+  .centerBox {
+    width: 90vw;
+  }
+
+  div.buttons{
+    height: auto;
+    width: 90%;
+    max-height: 100px;
+  }
+
+  img.buttonimg{
+    height: 100%;
+    width: auto;
+    max-height: 100px;
+  }
+}
+
+
+#bgimg {
+  opacity: 1;
+  transition: opacity 4s; 
+}
+
+#bgimg.fade {
+  opacity: 0;
 }
