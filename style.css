@@ -80,13 +80,13 @@ div.buttons:hover{
   div.buttons{
     height: auto;
     width: 90%;
-    max-height: 100px;
+    max-height: 80px;
   }
 
   img.buttonimg{
     height: 100%;
     width: auto;
-    max-height: 100px;
+    max-height: 80px;
   }
 }
 
