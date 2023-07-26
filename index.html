@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sven Julius Steinert</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+      function startAnimationAfterDelay() {
+        setTimeout(togglebg, 1500);
+      }
+    </script>
   </head>
-  <body >
+  <body onload="startAnimationAfterDelay()">
     <img id="bgimg" class="imgbanner" src="img/DSC_0100.avif" alt="Sven Julius Steinert">
 
-    <div class="centerBox" onclick="togglebg()" >
+    <div class="centerBox">
 
       <div class="buttons">
         <a target="_blank" href="https://github.com/Sven-J-Steinert"><img class="buttonimg" src="img/Github.png"></a>

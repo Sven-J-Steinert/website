@@ -4,6 +4,7 @@ html, body, canvas {
 }
 
 html{
+  overflow: hidden;
   background-color: rgb(229, 229, 229);
 }
 
@@ -80,13 +81,13 @@ div.buttons:hover{
   div.buttons{
     height: auto;
     width: 90%;
-    max-height: 80px;
+    max-height: 70px;
   }
 
   img.buttonimg{
     height: 100%;
     width: auto;
-    max-height: 80px;
+    max-height: 70px;
   }
 }
 
