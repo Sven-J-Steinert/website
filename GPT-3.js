@@ -10,8 +10,8 @@ function launchAni() {
   var force_max = 100;
   var objects = [];
   var canvas = document.createElement('canvas');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = screen.width;
+  canvas.height = screen.height;
   document.body.appendChild(canvas);
   var ctx = canvas.getContext('2d');
   var cent_w = window.innerWidth / 2;
