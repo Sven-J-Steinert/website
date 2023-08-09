@@ -10,12 +10,19 @@ function launchAni() {
   var force_max = 100;
   var objects = [];
   var canvas = document.createElement('canvas');
-  canvas.width = screen.width;
-  canvas.height = screen.height;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   document.body.appendChild(canvas);
   var ctx = canvas.getContext('2d');
   var cent_w = window.innerWidth / 2;
   var cent_h = window.innerHeight / 2;
+
+  if (getComputedStyle(canvas).backgroundColor == 'rgb(0, 0, 0)'){
+    obj_color = 'white';
+  }
+  if (getComputedStyle(canvas).backgroundColor == 'rgb(255, 255, 255)'){
+    obj_color = 'black';
+  }
 
   function Object(x, y, vx, vy, mass) {
     this.x = x;
@@ -107,6 +114,7 @@ function launchAni() {
   }
 
   function draw() {
+    ctx.fillStyle = obj_color;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < objects.length; i++) {
       var obj = objects[i];

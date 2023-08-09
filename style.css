@@ -5,6 +5,23 @@ html, body, canvas {
   background-color: rgb(229, 229, 229);
 }
 
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  html, body, canvas {
+      background-color: white;
+      color: black;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  html, body, canvas {
+      background-color: black;
+      color: white;
+  }
+}
+
+
 h1{
   color: navy;
   margin-left: 20px;
