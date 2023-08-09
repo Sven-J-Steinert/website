@@ -16,7 +16,7 @@ html, body, canvas {
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   html, body, canvas {
-      background-color: black;
+      background-color: #161618;
       color: white;
   }
 }
@@ -34,7 +34,8 @@ h1{
   left:50%;
   width: 100%;
   transform: translate(-50%, -50%);
-  background: hsla(0, 0%, 66%, 0.4);
+  background: hsla(0, 0%, 66%, 0.12);
+  
 }
 
 .imgbanner {

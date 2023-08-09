@@ -17,11 +17,11 @@ function launchAni() {
   var cent_w = window.innerWidth / 2;
   var cent_h = window.innerHeight / 2;
 
-  if (getComputedStyle(canvas).backgroundColor == 'rgb(0, 0, 0)'){
-    obj_color = 'white';
-  }
   if (getComputedStyle(canvas).backgroundColor == 'rgb(255, 255, 255)'){
     obj_color = 'black';
+  }
+  else {
+    obj_color = 'white';
   }
 
   function Object(x, y, vx, vy, mass) {
