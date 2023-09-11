@@ -5,27 +5,6 @@ html, body, canvas {
   background-color: rgb(229, 229, 229);
 }
 
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  html, body, canvas {
-      background-color: white;
-      color: black;
-  }
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  html, body, canvas {
-      background-color: #161618;
-      color: white;
-  }
-}
-
-
-h1{
-  color: navy;
-  margin-left: 20px;
-}
 
 .centerBox {
   text-align: center;
@@ -33,9 +12,9 @@ h1{
   top:80vh;
   left:50%;
   width: 100%;
+  height: auto;
   transform: translate(-50%, -50%);
   background: hsla(0, 0%, 66%, 0.12);
-  
 }
 
 .imgbanner {
@@ -52,7 +31,7 @@ h1{
 
 img.buttonimg{
     height: 100%;
-    width: 100%;
+    width: auto;
 }
 
 div.buttons{
@@ -66,8 +45,6 @@ div.buttons{
 div.buttons:hover{
     background: rgba(15,193,183,.5);
 }
-
-
 
 #bgimg {
   opacity: 1;
@@ -118,31 +95,33 @@ div.description{
 }
 
 @media only screen and (max-aspect-ratio: 13/16) {
-  .centerBox {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 0px;
-    top:70vh;
-    width: 100%;
-    
-  }
+  /* Phone mode */
 
   div.buttons{
-    width: 100%;
-    margin: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 75px;
+    display: block;
   }
 
-  img.buttonimg{
-    height: 100%;
-    width: auto;
+  .centerBox {
+    text-align: center;
+    width: 75%;
   }
 
-  div.description{
-    bottom: 80vh;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  html, body, canvas {
+      background-color: white;
+      color: black;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  html, body, canvas {
+      background-color: #161618;
+      color: white;
   }
 
-
+  
 }
