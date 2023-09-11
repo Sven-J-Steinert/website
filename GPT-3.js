@@ -107,58 +107,10 @@ function launchAni() {
       obj.y += obj.vy;
       }
 
-      updateGravityForPoints();
     
   }
 
-  function updateGravityForPoints() {
-    const strength_factor = 50;
 
-    for (let i = 0; i < numPointsX; i++) {
-      for (let j = 0; j < numPointsY; j++) {
-        const point = points[i][j];
-        point.gravityX = 0;
-        point.gravityY = 0;
-        
-
-        for (let obj of objects) {
-          const dx = obj.x - point.x;
-          const dy = obj.y - point.y;
-          const distSq = dx * dx + dy * dy;
-          const dist = Math.sqrt(distSq);
-          const force = strength_factor * G * obj.mass / distSq;
-          point.gravityX += force * dx / dist;
-          point.gravityY += force * dy / dist;
-           
-        }
-        point.gravity_norm = Math.sqrt(Math.pow(point.gravityX ,2) + Math.pow(point.gravityY,2))
-        
-        points[i][j].dx = strength_factor * point.gravityX / (point.gravity_norm );
-        points[i][j].dy = strength_factor * point.gravityY / (point.gravity_norm );
-      }
-    }
-
-    
-  }
-
-const gridSize = 50;
-  
-const numPointsX = Math.ceil(canvas.width / gridSize);
-const numPointsY = Math.ceil(canvas.height / gridSize);
-
-var points = [];
-for (let i = 0; i <= numPointsX; i++) {
-  const col = [];
-  for (let j = 0; j <= numPointsY; j++) {
-    col.push({
-      x: i * gridSize,
-      y: j * gridSize,
-      dx: 0,
-      dy: 0,
-    });
-  }
-  points.push(col);
-}
 
 
 
@@ -173,27 +125,6 @@ function draw() {
     ctx.fill();
   }
 
-  // Draw light connections between each point and its neighbors
-  ctx.strokeStyle = "rgba(200, 200, 200, 0.1)";
-  for (let i = 0; i < numPointsX; i++) {
-    for (let j = 0; j < numPointsY; j++) {
-      const point = points[i][j];
-      if (i > 0) {
-        const leftPoint = points[i - 1][j];
-        ctx.beginPath();
-        ctx.moveTo(point.x + point.dx, point.y + point.dy);
-        ctx.lineTo(leftPoint.x + leftPoint.dx, leftPoint.y + leftPoint.dy);
-        ctx.stroke();
-      }
-      if (j > 0) {
-        const topPoint = points[i][j - 1];
-        ctx.beginPath();
-        ctx.moveTo(point.x + point.dx, point.y + point.dy);
-        ctx.lineTo(topPoint.x + topPoint.dx, topPoint.y + topPoint.dy);
-        ctx.stroke();
-      }
-    }
-  }
 }
 
 
@@ -225,19 +156,19 @@ function draw() {
   var m_factor = A / A_ref;
 
   // Generate dust
-  var numRandomObjects = 1000;
+  var numRandomObjects = 2000;
   for (var i = 0; i < numRandomObjects; i++) {
-    generateRandomObject(0.5,1);
+    generateRandomObject(0.1,0.5);
   }
 
   // Generate medium
-  var numRandomObjects = 20; 
-  for (var i = 0; i < numRandomObjects; i++) {
-    generateRandomObject(5,10);
-  }
+  //var numRandomObjects = 0; 
+  //for (var i = 0; i < numRandomObjects; i++) {
+  //  generateRandomObject(5,10);
+  //}
 
   // Generate protosun
-  addObject(cent_w , cent_h, 0, 0, m_factor*50);
+  //addObject(cent_w , cent_h, 0, 0, m_factor*10);
 
   loop();
 

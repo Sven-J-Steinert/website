@@ -1,7 +1,9 @@
 function togglebg() {
   launchAni();
   var bgimg = document.getElementById('bgimg');
+  var descr = document.getElementById('descr');
   bgimg.classList.toggle('fade');
+  descr.classList.toggle('fade');
 }
 
 // Check if the device is a mobile phone

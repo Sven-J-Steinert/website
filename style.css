@@ -67,6 +67,44 @@ div.buttons:hover{
     background: rgba(15,193,183,.5);
 }
 
+
+
+#bgimg {
+  opacity: 1;
+  transition: opacity 4s; 
+}
+
+#bgimg.fade {
+  opacity: 0;
+}
+
+span.calligraphy{
+  font-family: "Inspiration", sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  color:white;
+}
+
+div.description{
+  clear: both;
+  position: absolute;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  bottom: 50vh;
+  left: 0;
+  right: 0;
+}
+
+#descr {
+  opacity: 0;
+  transition: opacity 50s;
+}
+
+#descr.fade {
+  opacity: 1;
+}
+
+
 @media only screen and (max-aspect-ratio: 4/2.2) {
   .imgbanner {
     width: auto;
@@ -94,14 +132,10 @@ div.buttons:hover{
     width: auto;
     max-height: 65px;
   }
-}
 
+  div.description{
+    bottom: 80vh;
+  }
+  
 
-#bgimg {
-  opacity: 1;
-  transition: opacity 4s; 
-}
-
-#bgimg.fade {
-  opacity: 0;
 }
