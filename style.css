@@ -90,18 +90,22 @@ div.description{
   position: absolute;
   text-align: center;
   font-family: "lato", sans-serif;
-  bottom: 50vh;
+  bottom: 60vh;
   left: 0;
   right: 0;
 }
 
 #descr {
   opacity: 0;
-  transition: opacity 50s;
+  transition: opacity 5s;
 }
 
 #descr.fade {
   opacity: 1;
+}
+
+.shadow {
+  text-shadow: 0px 0px 5px black; 
 }
 
 
@@ -114,28 +118,31 @@ div.description{
 }
 
 @media only screen and (max-aspect-ratio: 13/16) {
-
   .centerBox {
-    margin: 2vw;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0px;
     top:70vh;
-    width: auto;
+    width: 100%;
+    
   }
 
   div.buttons{
-    height: auto;
     width: 100%;
-    max-height: 70px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 75px;
   }
 
   img.buttonimg{
     height: 100%;
     width: auto;
-    max-height: 65px;
   }
 
   div.description{
     bottom: 80vh;
   }
-  
+
 
 }
