@@ -106,36 +106,66 @@ function launchAni() {
 
   function draw() {
     // Draw objects
-    ctx.fillStyle = obj_color;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < objects.length; i++) {
       var obj = objects[i];
-      if (obj.mass > 100*m_factor) {
+  
+      if (obj.mass > 10 * m_factor) {
+        // Determine the glow radius based on mass
         var glowRadius = Math.sqrt(obj.mass);
-    
+  
+        // Calculate the luminosity factor (you can use obj.mass as a proxy for luminosity)
+        var luminosityFactor = obj.mass / (200 * m_factor);
+  
+        // Calculate the color based on the Hertzsprung-Russell diagram
+        var color = getColorFromHRDiagram(luminosityFactor);
+  
+        // Set the fill style to the calculated color
+        //ctx.fillStyle = color;
+  
+
         // Draw the glowing circle
         ctx.beginPath();
         ctx.arc(obj.x, obj.y, glowRadius, 0, 2 * Math.PI);
-        ctx.shadowBlur = 20; // Adjust the glow effect intensity
-        ctx.shadowColor = "rgba(253, 184, 19, 0.9)"; // Glow color
+        ctx.shadowBlur = 2* glowRadius; // Adjust the glow effect intensity
+        ctx.shadowColor = color; // Glow color
         ctx.fillStyle = obj_color;
         ctx.fill();
         ctx.shadowBlur = 0; // Reset shadowBlur for non-glowing objects
-    
-        // Draw the object
-        ctx.beginPath();
-        ctx.arc(obj.x, obj.y, glowRadius, 0, 2 * Math.PI);
-        ctx.fillStyle = obj_color;
-        ctx.fill();
-      }
-      else {
+
+
+      } else {
         ctx.beginPath();
         ctx.arc(obj.x, obj.y, Math.sqrt(obj.mass), 0, 2 * Math.PI);
+        ctx.fillStyle = obj_color;
         ctx.fill();
       }
     }
   }
-
+  
+  // Function to get color based on the Hertzsprung-Russell diagram with red to orange to blue gradient
+  function getColorFromHRDiagram(luminosityFactor) {
+    var r, g, b;
+  
+    // Interpolate between red, orange, and blue based on luminosityFactor
+    if (luminosityFactor <= 0.5) {
+      r = 255;
+      g = 165 + luminosityFactor * 190; // Start from orange
+      b = 0;
+    } else {
+      r = 255 - (luminosityFactor - 0.5) * 255; // Transition from orange to blue
+      g = 255 - (luminosityFactor - 0.5) * 255;
+      b = 255;
+    }
+  
+    return "rgb(" + Math.round(r) + ", " + Math.round(g) + ", " + Math.round(b) + ")";
+  }
+  
+  
+  
+  
+  
+  
   var lastTime = 0;
   var frameRate = 1000 / 60; // 60 FPS
   function loop(timestamp) {
