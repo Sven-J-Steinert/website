@@ -105,6 +105,11 @@ div.description{
   .centerBox {
     text-align: center;
     width: 75%;
+    position: absolute;
+    bottom: 50px;
+    left:50%;
+    height: auto;
+    transform: translate(-50%, 0%);
   }
 
 }
