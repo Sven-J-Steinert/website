@@ -110,9 +110,29 @@ function launchAni() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < objects.length; i++) {
       var obj = objects[i];
-      ctx.beginPath();
-      ctx.arc(obj.x, obj.y, Math.sqrt(obj.mass), 0, 2 * Math.PI);
-      ctx.fill();
+      if (obj.mass > 100*m_factor) {
+        var glowRadius = Math.sqrt(obj.mass);
+    
+        // Draw the glowing circle
+        ctx.beginPath();
+        ctx.arc(obj.x, obj.y, glowRadius, 0, 2 * Math.PI);
+        ctx.shadowBlur = 20; // Adjust the glow effect intensity
+        ctx.shadowColor = "rgba(253, 184, 19, 0.9)"; // Glow color
+        ctx.fillStyle = obj_color;
+        ctx.fill();
+        ctx.shadowBlur = 0; // Reset shadowBlur for non-glowing objects
+    
+        // Draw the object
+        ctx.beginPath();
+        ctx.arc(obj.x, obj.y, glowRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = obj_color;
+        ctx.fill();
+      }
+      else {
+        ctx.beginPath();
+        ctx.arc(obj.x, obj.y, Math.sqrt(obj.mass), 0, 2 * Math.PI);
+        ctx.fill();
+      }
     }
   }
 

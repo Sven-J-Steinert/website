@@ -87,6 +87,7 @@ div.description{
 
 
 @media only screen and (max-aspect-ratio: 4/2.2) {
+  /* adjust portait picture */
   .imgbanner {
     width: auto;
     height:100vh;
