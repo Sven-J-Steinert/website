@@ -109,29 +109,37 @@ function launchAni() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < objects.length; i++) {
       var obj = objects[i];
+      var treshhold =  0.02* (TotalMass * m_factor);
   
-      if (obj.mass > 10 * m_factor) {
-        // Determine the glow radius based on mass
-        var glowRadius = Math.sqrt(obj.mass);
+      if (obj.mass > treshhold) {
+        
   
         // Calculate the luminosity factor (you can use obj.mass as a proxy for luminosity)
-        var luminosityFactor = obj.mass / (200 * m_factor);
+        var luminosityFactor = (obj.mass - treshhold) / (TotalMass * m_factor * 0.5);
   
         // Calculate the color based on the Hertzsprung-Russell diagram
         var color = getColorFromHRDiagram(luminosityFactor);
   
         // Set the fill style to the calculated color
         //ctx.fillStyle = color;
-  
+
+        // Determine the glow radius based on mass
+        var glowRadius = Math.sqrt(obj.mass)*1.1;
 
         // Draw the glowing circle
         ctx.beginPath();
         ctx.arc(obj.x, obj.y, glowRadius, 0, 2 * Math.PI);
-        ctx.shadowBlur = 2* glowRadius; // Adjust the glow effect intensity
+        ctx.shadowBlur = 5* glowRadius; // Adjust the glow effect intensity
         ctx.shadowColor = color; // Glow color
-        ctx.fillStyle = obj_color;
+        ctx.fillStyle = color;
         ctx.fill();
         ctx.shadowBlur = 0; // Reset shadowBlur for non-glowing objects
+
+        // draw white base circle
+        ctx.beginPath();
+        ctx.arc(obj.x, obj.y, Math.sqrt(obj.mass), 0, 2 * Math.PI);
+        ctx.fillStyle = obj_color;
+        ctx.fill();
 
 
       } else {
@@ -143,31 +151,35 @@ function launchAni() {
     }
   }
   
-  // Function to get color based on the Hertzsprung-Russell diagram with red to orange to blue gradient
+  // Function to get color based on the Hertzsprung-Russell diagram with dark red, orange, white, and blue gradient
   function getColorFromHRDiagram(luminosityFactor) {
-    var r, g, b;
-  
-    // Interpolate between red, orange, and blue based on luminosityFactor
-    if (luminosityFactor <= 0.5) {
-      r = 255;
-      g = 165 + luminosityFactor * 190; // Start from orange
-      b = 0;
+    let r, g, b;
+
+    if (luminosityFactor <= 0.25) {
+        // Red giants
+        r = 255;
+        g = b = luminosityFactor * 4 * 255;
+    } else if (luminosityFactor <= 0.5) {
+        // Main sequence stars (like our Sun)
+        r = 255;
+        g = 255;
+        b = (luminosityFactor - 0.25) * 4 * 255;
+    } else if (luminosityFactor <= 0.75) {
+        // White dwarfs
+        r = g = b = 255 - (luminosityFactor - 0.5) * 4 * 255;
     } else {
-      r = 255 - (luminosityFactor - 0.5) * 255; // Transition from orange to blue
-      g = 255 - (luminosityFactor - 0.5) * 255;
-      b = 255;
+        // Blue giants
+        r = g = (1 - luminosityFactor) * 4 * 255;
+        b = 255;
     }
+
+    return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+}
+
   
-    return "rgb(" + Math.round(r) + ", " + Math.round(g) + ", " + Math.round(b) + ")";
-  }
-  
-  
-  
-  
-  
-  
+    
   var lastTime = 0;
-  var frameRate = 1000 / 60; // 60 FPS
+  var frameRate = 1000 /30; // 60 FPS
   function loop(timestamp) {
     var deltaTime = timestamp - lastTime;
     if (deltaTime >= frameRate) {
@@ -182,6 +194,7 @@ function launchAni() {
   function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
   }
+  var TotalMass = 0;
 
   // Function to generate a random object
   function generateRandomObject(min_mass, max_mass) {
@@ -190,6 +203,7 @@ function launchAni() {
     var vx = randomInRange(-1, 1);
     var vy = randomInRange(-1, 1);
     var mass = randomInRange(min_mass, max_mass);
+    TotalMass = TotalMass + mass;
     addObject(x, y, vx, vy, m_factor * mass);
   }
 
@@ -202,12 +216,10 @@ function launchAni() {
   var m_factor = A / A_ref;
 
   // Generate dust
-  var numRandomObjects = 1000;
+  var numRandomObjects = 3000;
   for (var i = 0; i < numRandomObjects; i++) {
-    generateRandomObject(0.2, 1);
+    generateRandomObject(0.2, 0.5);
   }
 
   requestAnimationFrame(loop);
 }
-
-launchAni();
