@@ -10,7 +10,8 @@ function launchAni() {
   var cent_w = window.innerWidth / 2;
   var cent_h = window.innerHeight / 2;
 
-  var obj_color = getComputedStyle(canvas).backgroundColor === 'rgb(0, 0, 0)' ? 'black' : 'white';
+  canvas.style.backgroundColor = 'black';
+  var obj_color = 'white';
 
   function Object(x, y, vx, vy, mass) {
     this.x = x;
@@ -179,7 +180,7 @@ function launchAni() {
   
     
   var lastTime = 0;
-  var frameRate = 1000 /30; // 60 FPS
+  var frameRate = 1000 / 60; // 60 FPS
   function loop(timestamp) {
     var deltaTime = timestamp - lastTime;
     if (deltaTime >= frameRate) {
