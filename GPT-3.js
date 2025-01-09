@@ -217,9 +217,9 @@ function launchAni() {
   var m_factor = A / A_ref;
 
   // Generate dust
-  var numRandomObjects = 3000;
+  var numRandomObjects = 1000;
   for (var i = 0; i < numRandomObjects; i++) {
-    generateRandomObject(0.2, 0.5);
+    generateRandomObject(0.5, 0.8);
   }
 
   requestAnimationFrame(loop);
