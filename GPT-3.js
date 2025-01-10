@@ -9,8 +9,17 @@ function launchAni() {
   var ctx = canvas.getContext('2d');
   var cent_w = window.innerWidth / 2;
   var cent_h = window.innerHeight / 2;
-
+  
+  // Update canvas style to stay in the background
+  canvas.style.position = 'fixed'; // Ensures the canvas stays in place during scrolling
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.zIndex = '-2'; // Places it behind all other elements
   canvas.style.backgroundColor = 'black';
+  
+  
   var obj_color = 'white';
 
   function Object(x, y, vx, vy, mass) {

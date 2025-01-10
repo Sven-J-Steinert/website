@@ -7,34 +7,81 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <script>
       function startAnimationAfterDelay() {
-        setTimeout(togglebg, 1500);
+        setTimeout(togglebg, 5000);
       }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
   </head>
   <body onload="startAnimationAfterDelay()">
-    <img id="bgimg" class="imgbanner" src="img/DSC_0100.avif" alt="Sven Julius Steinert">
-
-    <div class="centerBox">
-
-      <div class="buttons">
-        <a target="_blank" href="https://github.com/Sven-J-Steinert"><img class="buttonimg" src="img/Github.png"></a>
-      </div>
-      <div class="buttons">
-        <a target="_blank" href="https://www.researchgate.net/profile/Sven-Steinert-2"><img class="buttonimg" src="img/ResearchGate.png"></a>
-      </div>
-      <div class="buttons">
-        <a target="_blank" href="https://orcid.org/0000-0003-4424-670X"><img class="buttonimg" src="img/ORCid.png"></a>
-      </div>
-      
-
-    </div>
+    <img id="bgimg" class="imgbanner" src="img/Background.avif" alt="Sven Julius Steinert">
 
     <div class="description" id="descr">
       <span class="calligraphy shadow">Star Formation</span>
     </div>
 
+  <div class="content-wrapper">
+    <div class="spacer"></div>
+  <div>
+      <div class="centerBox">
+        <div class="buttons">
+          <a target="_blank" href="https://github.com/Sven-J-Steinert"><img class="buttonimg" src="img/Github.png"></a>
+        </div>
+        <div class="buttons">
+          <a target="_blank" href="https://www.researchgate.net/profile/Sven-Steinert-2"><img class="buttonimg" src="img/ResearchGate.png"></a>
+        </div>
+        <div class="buttons">
+          <a target="_blank" href="https://orcid.org/0000-0003-4424-670X"><img class="buttonimg" src="img/ORCid.png"></a>
+        </div>
+      </div>
+
+      <!-- Card Element -->
+      <div class="card">
+        <img class="card-gallery" src="img/Masterthesis.avif" alt="Project Gallery">
+        <div class="card-content">
+          <h2 class="card-title">Experimental Characterisation of the XR-100 Resistojet in the ESA Propulsion Laboratory</h2>
+          <p class="card-type">Masterthesis - 2024, ESA & TUM</p>
+          <p class="card-summary">An experimental setup was constructed and carried out on site at ESTEC, in the Netherlands. Multiple data-aquisition systems based on LabVIEW have been recording key parameters during the test. The Imperial thrust balance was utilised and improved on multiple aspects. The calibration procedures and evaluation was automated, the uncertainty budget was expanded and a new post processing method was crafted to support thrust curve measurements. Uncertainty budgets have been determined for both the mass flow- and the thrust measurements. This characterisation was exemplary to aquire all skills sourrounding vacuum testing of electric propulsion.</p>
+          <div class="card-button-container">
+            <a href="https://files.sven-j-steinert.de/Masterthesis.pdf" target="_blank" class="card-button"> <img src="img/pdf.svg"> </a>
+          </div> 
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-gallery" src="img/Smesterthesis.avif" alt="Project Gallery">
+        <div class="card-content">
+          <h2 class="card-title">Design of a Hall Thruster and Investigation for a Water Electrolysis Propulsion System</h2>
+          <p class="card-type">Semesterthesis - 2024, TUM</p>
+          <p class="card-summary">As an early stage investigation on electrical propulsion via electrolysis, a Hall Thruster was designed for operation on molecular oxygen. A magnetically shielded configuration was developed through simulations with FEMM. To enable parametric testing, the discharge channel length was layed out to be stepless adjustable. Nevertheless, it is concluded that electric propulsion based on oxygen is facing drawbacks in low efficiency, especially when evaluated over the full electrolysis system. As alternative, experimental ideas for OH- ion extraction directly from the water are proposed.</p>
+          <div class="card-button-container">
+            <a href="https://files.sven-j-steinert.de/Semesterthesis.pdf" target="_blank" class="card-button"> <img src="img/pdf.svg"> </a>
+          </div> 
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-gallery" src="img/Frontiers.avif" alt="Project Gallery">
+        <div class="card-content">
+          <h2 class="card-title">Location-dependent flight cost difference from the lunar surface to an orbital fuel depot and its influence on in-situ resource utilisation location selection</h2>
+          <p class="card-type">Peer Reviewed Research Paper - 2024, DLR</p>
+          <p class="card-summary">In order to determine the most optimal location for a robotic factory on the moon, production- and transportation dependencies have been compared. In this work, the process of ilmenite reduction was analysed globally with imaging data of the Lunar Reconnaissance Orbiter and factory scaling models. For the transportation costs a global delta-v map to the 9:2 NRHO was constructed, which was applied to a launcher. The key finding is an insignificant influence of the transportation costs on the location selection.</p>
+          <div class="card-button-container">
+            <a href="https://github.com/Sven-J-Steinert/10.3389-frspt.2024.1352213" target="_blank" class="card-button"> <img style="height:30px" src="img/repo.svg"> </a>
+            <a href="https://www.frontiersin.org/journals/space-technologies/articles/10.3389/frspt.2024.1352213/pdf" target="_blank" class="card-button"> <img src="img/pdf.svg"> </a>
+          </div> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <a class="impressum-toggle" href="#">Impressum</a>
+    <center><div class="impressum-details" style="display: none;"></div></center>
+  </div>
+
   </body>
+  <script src="impressum.js"></script>
   <script src="GPT-3.js"></script>
   <script src="wraping.js"></script>
 </html>
