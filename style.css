@@ -174,6 +174,49 @@ div.description{
   background-color: #eeeeee;
 }
 
+/* Scholar-friendly publications list */
+.pub-list { margin: 0; padding-left: 1.2rem; }
+.pub-list li { margin: 0.6rem 0; line-height: 1.35; }
+.pub-link { text-decoration: underline; }
+/* Publications card tweaks */
+.publications-card { background-color: rgba(220, 220, 220, 0.8) !important; color: rgba(0,0,0,0.9) !important; }
+.publications-card a { color: inherit; }
+.publications-card a:hover { opacity: 0.5; }
+.publications-card .card-title { margin-top: 0; }
+.publications-card .card-type { opacity: 0.5; }
+
+
+.card-button {
+  /* typography */
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  /* appearance */
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.65);
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+
+}
+
+/* Hover */
+.card-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+  opacity: 0.85;
+}
+
+/* Active / click */
+.card-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+
 .footer {
   left: 0;
   bottom: 0;
